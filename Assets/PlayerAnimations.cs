@@ -92,6 +92,7 @@ public class PlayerAnimations : MonoBehaviour {
         {
             animator.SetBool("walking", true);
             speed = speedWalking;
+            transform.Rotate(Vector3.right * Time.deltaTime);
         }
         else
         {
