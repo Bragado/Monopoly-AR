@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
+
 public class PlayerAnimations : MonoBehaviour {
 
 
@@ -28,10 +31,18 @@ public class PlayerAnimations : MonoBehaviour {
 
 
 
-    private Animator animator; 
+    private Animator animator = null;
     //public Transform StartingPoint;
     //public Transform Jail; 
- 
+
+
+    /* To notice the manager that my turn is over */
+    
+    public delegate void Done();
+    public Done done;
+
+
+
 
     // Use this for initialization
     void Start () {
@@ -50,38 +61,12 @@ public class PlayerAnimations : MonoBehaviour {
         bool running = Input.GetKey(KeyCode.S);
         animator.SetBool("running", running);
     */
-        if(Input.GetKey(KeyCode.Alpha1))
-        {
-            setOnMove(1);
-            Debug.Log("KeyDown");
-        }
-        if (Input.GetKey(KeyCode.Alpha2))
-        {
-            Debug.Log("KeyDown");
-            setOnMove(2);
-
-        }
-        if (Input.GetKey(KeyCode.Alpha3))
-        {
-            setOnMove(3);
-        }
-        if (Input.GetKey(KeyCode.Alpha4))
-        {
-            setOnMove(4);
-        }
-        if (Input.GetKey(KeyCode.Alpha5))
-        {
-            setOnMove(5);
-        }
-        if (Input.GetKey(KeyCode.Alpha6))
-        {
-            setOnMove(6);
-        }
+       
 
 
     }
 
-    void setOnMove(int houses)
+    public void setOnMove(int houses)
     {
         if (onMove)
             return;
@@ -277,9 +262,20 @@ public class PlayerAnimations : MonoBehaviour {
                 animator.SetBool("walking", false);
                 animator.SetBool("running", false);
                 onMove = false;
+                done();
             }
         }
 
         
     }
+    /*
+
+    public interface AnimationTime
+    {
+        void Done();
+    }*/
+
+
+
+
 }

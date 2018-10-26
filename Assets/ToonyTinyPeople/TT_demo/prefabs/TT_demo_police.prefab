@@ -24,9 +24,10 @@ GameObject:
   m_Component:
   - component: {fileID: 468750}
   - component: {fileID: 9559816}
+  - component: {fileID: 114313396492605778}
   m_Layer: 0
   m_Name: TT_demo_police
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -741,9 +742,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 108018}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000016292068}
-  m_LocalPosition: {x: 3.72, y: 0, z: -0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.57080895, y: 0.07500002, z: -0.5}
+  m_LocalScale: {x: 0.07, y: 0.07, z: 0.07}
   m_Children:
   - {fileID: 486602}
   - {fileID: 494976}
@@ -999,7 +1000,7 @@ Animator:
   m_GameObject: {fileID: 108018}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: fdfb5e1c4a1b339489c0eddebb1ab872, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 581566780fdc9484899a84881a6bec5c, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -1081,3 +1082,22 @@ Prefab:
   m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 108018}
   m_IsPrefabAsset: 1
+--- !u!114 &114313396492605778
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 108018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17e75e85424f5304ab4094aa41f8d367, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  speedWalking: 0.05
+  speedRunning: 0.15
+  speedRotation: 0
