@@ -13,18 +13,19 @@ public class GameRunner : MonoBehaviour  {
 
     
     /* Active Player */
-    private PlayerAnimations ActivePlayer;
+    private PlayerTurn ActivePlayer;
     private int playerTurn = 0;
-    private bool active = false;
- 
+
+    public Database database;
+    
 
 	
 	void Start () {
 
         /* Store Locally a reference to all player's movement animation script*/
 
-        GameObject player;        
-        PlayerAnimations playerAnimation = null;
+        GameObject player;
+        PlayerTurn playerAnimation = null;
 
         GameObject[] playersList = GameObject.FindGameObjectsWithTag("Player");
 
@@ -36,7 +37,7 @@ public class GameRunner : MonoBehaviour  {
 
             if(player != null)
             {
-                playerAnimation = player.GetComponent<PlayerAnimations>();
+                playerAnimation = player.GetComponent<PlayerTurn>();
                
             }
                 
@@ -50,9 +51,10 @@ public class GameRunner : MonoBehaviour  {
             }
                 
         }
-        ActivePlayer = (PlayerAnimations)playerAnimations[0];
-         
+        ActivePlayer = (PlayerTurn)playerAnimations[0];
+        ActivePlayer.activate();
 
+        database = new Database();
     }
 
 
@@ -61,46 +63,15 @@ public class GameRunner : MonoBehaviour  {
     {
         
         playerTurn = (playerTurn + 1) % numberOfPlayers;
-        ActivePlayer = (PlayerAnimations)playerAnimations[playerTurn];
-        active = false;
-      
-         
+        ActivePlayer = (PlayerTurn)playerAnimations[playerTurn];
+        ActivePlayer.activate();
+
+
     }
 
     // TODO : Erase
     void Update () {
-        if (Input.GetKey(KeyCode.Alpha1) && !active)
-        {
-            ActivePlayer.setOnMove(1);
-            active = true;
-            Debug.Log("KeyDown");
-        }
-        if (Input.GetKey(KeyCode.Alpha2) && !active)
-        {
-            active = true;
-            ActivePlayer.setOnMove(2);
-
-        }
-        if (Input.GetKey(KeyCode.Alpha3) && !active)
-        {
-            ActivePlayer.setOnMove(3);
-            active = true;
-        }
-        if (Input.GetKey(KeyCode.Alpha4) && !active)
-        {
-            ActivePlayer.setOnMove(4);
-            active = true;
-        }
-        if (Input.GetKey(KeyCode.Alpha5) && !active)
-        {
-            ActivePlayer.setOnMove(5);
-            active = true;
-        }
-        if (Input.GetKey(KeyCode.Alpha6) && !active)
-        {
-            ActivePlayer.setOnMove(6);
-            active = true;
-        }
+       
 
     }
 }

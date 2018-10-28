@@ -37,7 +37,7 @@ public class PlayerAnimations : MonoBehaviour
     //public Transform Jail; 
 
 
-    /* To notice the manager that my turn is over */
+    /* To notice the manager that my movement is over */
 
     public delegate void Done();
     public Done done;
@@ -134,7 +134,7 @@ public class PlayerAnimations : MonoBehaviour
                 // create here the arc mouvement
                
                 createArcMovement(target[walks - 1], angle);
-                houses--;
+                 
                 angle = (angle + 90) % 360;
                 housesMoved = 0;
                 //walks++;
