@@ -67,7 +67,7 @@ public class PlayerInfo  {
                 if (totalHouses < 0)
                 {
                     y = 0;
-                   num_houses = -(totalHouses % 11) + 1;
+                   num_houses = -(totalHouses % 11) ;
                 }
                 else
                 {
@@ -83,7 +83,7 @@ public class PlayerInfo  {
                 if (totalHouses < 0)
                 {
                     x = 0;
-                    num_houses = -(totalHouses % 11) + 1;
+                    num_houses = -(totalHouses % 11) ;
                 }
                 else
                 {

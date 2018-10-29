@@ -55,6 +55,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\BasePlayer.cs" />
      <Compile Include="Assets\Scripts\BuyPropertyMenu.cs" />
+     <Compile Include="Assets\Scripts\ChoosePropertyCardMenu.cs" />
      <Compile Include="Assets\Scripts\Database.cs" />
      <Compile Include="Assets\Scripts\DiceScript.cs" />
      <Compile Include="Assets\Scripts\GameRunner.cs" />
@@ -114,6 +115,7 @@
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Oswald Bold - OFL.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Masking.shader" />
+     <None Include="Assets\Simple city plain\Read_me.txt" />
      <None Include="Assets\Vuforia\Shaders\DepthMask.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
      <None Include="Assets\Vuforia\Databases\Emulator\VuforiaEmulator.xml" />

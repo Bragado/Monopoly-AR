@@ -15,12 +15,18 @@ public class Database  {
         READCHANCECARD,
         CHANGECARDFINISH,
         RETRIEVECENTERMONEY,
+        WAITINGFORUSERTOGETPROPERTYCARD,
+        VISITINGJAIL,
+        INJAIL,
         NONE
     }
 
 
     private Property[,] properties = new Property[11, 11];
     private ArrayList players = new ArrayList();
+
+    private int CenterMoney = 0;
+
 
     public Database()
     {
@@ -29,23 +35,45 @@ public class Database  {
 
     public PROPERTY_ACTION GetNextAction(Property property, PlayerInfo player)
     {
-        if (CheckPropertyIsAvailable(property))
-            return PROPERTY_ACTION.BUYPROPERTY;
+        
         if (!CheckPropertyIsAvailable(property) && property.owner != player)
             return PROPERTY_ACTION.RENTPROPERTY;
         if (!CheckPropertyIsAvailable(property) && property.owner == player)
             return PROPERTY_ACTION.VISITINGPROPERTY;
         if (property.type == Property.Type.Chance)
             return PROPERTY_ACTION.READCHANCECARD;
+        if(property.x == 0 && property.y == 0)
+            return PROPERTY_ACTION.NONE;
         if (property.x == 0 && property.y == 10)
             return PROPERTY_ACTION.GOTOJAIL;
         if (property.x == 10 && property.y == 10)
             return PROPERTY_ACTION.RETRIEVECENTERMONEY;
+        if (property.x == 10 && property.y == 0)
+            return PROPERTY_ACTION.NONE;
         if (property.type == Property.Type.Taxes)
             return PROPERTY_ACTION.PAYTAXES;
+        if (CheckPropertyIsAvailable(property))
+            return PROPERTY_ACTION.BUYPROPERTY;
         return PROPERTY_ACTION.NONE;
     }
 
+    public void PayTaxes(PlayerInfo player, int Amount)
+    {
+        player.DisccountMoney(Amount);
+        CenterMoney += Amount;
+
+    }
+
+    public int GetCenterMoney()
+    {
+        return CenterMoney;
+    }
+
+    public void GiveCenterMoney2Player(PlayerInfo player)
+    {
+        player.AddMoney(CenterMoney);
+        CenterMoney = 0;
+    }
 
     public void SubscribePlayer(PlayerInfo player)
     {

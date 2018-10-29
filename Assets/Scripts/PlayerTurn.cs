@@ -16,6 +16,9 @@ public class PlayerTurn : MonoBehaviour
     public GameObject Menu;
     private BuyPropertyMenu bpm;
 
+    public GameObject ChoosePropertyCard;
+    private ChoosePropertyCardMenu choosePropertyCardMenu;
+
     /* Player Animation */
     private PlayerAnimations playerAnimations;
 
@@ -23,6 +26,7 @@ public class PlayerTurn : MonoBehaviour
     private bool active = false;
     private bool AnimationActive = false;
     private Database.PROPERTY_ACTION PropAction;
+    private int NoPlayTurns = 0;
 
     /* Player Info */
     PlayerInfo playerInfo = new PlayerInfo();
@@ -43,53 +47,63 @@ public class PlayerTurn : MonoBehaviour
     void Update()
     {
         if (!active )
-            return;
-       // Debug.Log("Entaooooo");
+            return; 
 
         if (Input.GetKey(KeyCode.Alpha1) && !AnimationActive)
         {
-            playerAnimations.setOnMove(1);
-
-            AnimationActive = true;
-            playerInfo.Move(1);
-            Debug.Log("KeyDown");
+            Move(1);
         }
         if (Input.GetKey(KeyCode.Alpha2) && !AnimationActive)
         {
-            AnimationActive = true;
-            playerAnimations.setOnMove(2);
-            playerInfo.Move(2);
+            Move(2);
         }
         if (Input.GetKey(KeyCode.Alpha3) && !AnimationActive)
         {
-            playerAnimations.setOnMove(3);
-            AnimationActive = true;
-            playerInfo.Move(3);
+            Move(3);
         }
         if (Input.GetKey(KeyCode.Alpha4) && !AnimationActive)
         {
-            playerAnimations.setOnMove(4);
-            AnimationActive = true;
-            playerInfo.Move(4);
+            Move(4);
         }
         if (Input.GetKey(KeyCode.Alpha5) && !AnimationActive)
         {
-            playerAnimations.setOnMove(5);
-            AnimationActive = true;
-            playerInfo.Move(5);
+            Move(12);
         }
         if (Input.GetKey(KeyCode.Alpha6) && !AnimationActive)
         {
-            playerAnimations.setOnMove(6);
-            AnimationActive = true;
-            playerInfo.Move(6);
+            Move(6);
         }
+    }
+
+    public void Move(int moves)
+    {
+        if(NoPlayTurns > 0)
+        {
+            this.AnimationActive = true;
+            NoPlayTurns--;
+            Menu.SetActive(true);
+            bpm = Menu.GetComponent<BuyPropertyMenu>();
+            bpm.done = InJail;
+            bpm.GenericMenu("You Are Still In Prison");
+            if(NoPlayTurns == 0) {
+                PropAction = Database.PROPERTY_ACTION.NONE;
+            }
+            
+        }
+        else
+        {
+            playerAnimations.setOnMove(moves);
+            AnimationActive = true;
+            playerInfo.Move(moves);
+        }
+
+        
     }
 
 
     public void activate()
     {
-        Debug.Log("Im active");
+        
         this.active = true;
     }
 
@@ -97,15 +111,23 @@ public class PlayerTurn : MonoBehaviour
     {
         Debug.Log("Player Coordinate: [X, Y] = [" + playerInfo.x + ", " + playerInfo.y + "]");
 
+
+        // Just To be sure
         if (database == null)
         {
             GameRunner gr = Manager.GetComponent<GameRunner>();
             this.database = gr.database;
         }
 
+        if(PropAction == Database.PROPERTY_ACTION.INJAIL)     // If he was supposed to go to jail, no action is needed
+        {
+            NoPlayTurns = 3;
+            done();
+            return;
+        }
 
            
-
+        // Get Property
         Property prop = database.GetProperty(playerInfo.x, playerInfo.y);
         PropAction = database.GetNextAction(prop, playerInfo);
 
@@ -114,12 +136,39 @@ public class PlayerTurn : MonoBehaviour
         Menu.SetActive(true);
         
         bpm = Menu.GetComponent<BuyPropertyMenu>();
-        bpm.PropertyArriveMessage(prop, playerInfo);
+        bpm.PropertyArriveMessage(prop, playerInfo, database);
         bpm.done = MenuAnswer;
                 
 
 
        
+    }
+    public void showPickCardMenu()
+    {
+
+        choosePropertyCardMenu = ChoosePropertyCard.GetComponent<ChoosePropertyCardMenu>();
+        ChoosePropertyCard.SetActive(true);
+        choosePropertyCardMenu.done = CardPicked;
+        choosePropertyCardMenu.SetMessage("This Menu Will help you choose your Card. The Property Card you desire will appear market. When you find select OK to close this menu.");
+        // TODO: Mark The Card the bought
+
+    }
+
+    public void CardPicked()
+    {
+        
+         
+        ChoosePropertyCard.SetActive(false);
+        // TODO: Unmark The Card the bought
+        done();
+    }
+
+    public void InJail(bool answer)
+    {
+        Menu.SetActive(false);
+        this.AnimationActive = false;
+        this.active = false;
+        done();
     }
 
 
@@ -133,15 +182,17 @@ public class PlayerTurn : MonoBehaviour
             {
                 case Database.PROPERTY_ACTION.BUYPROPERTY:
                     database.BuyProperty(playerInfo, playerInfo.x, playerInfo.y);
-                    PropAction = Database.PROPERTY_ACTION.NONE;
+                    PropAction = Database.PROPERTY_ACTION.WAITINGFORUSERTOGETPROPERTYCARD;
+                    
+                    showPickCardMenu();
                     break;
                 case Database.PROPERTY_ACTION.RENTPROPERTY:
-                     Debug.Log("RENT PROPERTY");
+                     
                     database.RentProperty(playerInfo);
                     PropAction = Database.PROPERTY_ACTION.NONE;
                     break;
                 case Database.PROPERTY_ACTION.PAYTAXES:
-                    //database.PayTaxes(playerInfo),
+                    database.PayTaxes(playerInfo, database.GetProperty(playerInfo.x, playerInfo.y).value);
                     PropAction = Database.PROPERTY_ACTION.NONE;
                     break;
                 case Database.PROPERTY_ACTION.READCHANCECARD:
@@ -150,38 +201,45 @@ public class PlayerTurn : MonoBehaviour
                     break;
                 case Database.PROPERTY_ACTION.GOTOJAIL:
                     // GO TO JAIL
-                    // playerAnimations.setOnMove(20);
-                    // playerInfo.Move(20);
-                    PropAction = Database.PROPERTY_ACTION.NONE;
+                    
+                    playerAnimations.setOnMove(20);
+                    playerInfo.Move(20);
+                    PropAction = Database.PROPERTY_ACTION.INJAIL;
                     break;
+
                 case Database.PROPERTY_ACTION.RETRIEVECENTERMONEY:
-                    // database.AddCenterMoneyToPlayer(playerInfo);
+                    database.GiveCenterMoney2Player(playerInfo);
                     PropAction = Database.PROPERTY_ACTION.NONE;
                     break;
                 case Database.PROPERTY_ACTION.VISITINGPROPERTY:
                     PropAction = Database.PROPERTY_ACTION.NONE;
                     break;
+                
+                        
             }
             
 
         }else
         {
-            // dont buy the property
-            Debug.Log("Do not Buy the Property!!!!");
+            PropAction = Database.PROPERTY_ACTION.NONE;
+            this.AnimationActive = false;
+            this.active = false;
         }
 
         Menu.SetActive(false);
         this.AnimationActive = false;
-        if (PropAction ==   Database.PROPERTY_ACTION.NONE)
+        this.active = false;
+        Debug.Log("PLAYER MONEY: " + playerInfo.GetMoney() + " !!!!");
+        if (PropAction ==   Database.PROPERTY_ACTION.NONE )
         {
-            this.active = false;
+            done();
         }
 
 
-        Debug.Log("PLAYER MONEY: " + playerInfo.GetMoney() + " !!!!");
+        
         
          
-        done();
+        
 
     }
 }
