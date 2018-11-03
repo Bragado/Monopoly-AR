@@ -4,18 +4,17 @@ using UnityEngine;
 
 public class DiceScript : MonoBehaviour {
 
-	static Rigidbody rb;
-	public static Vector3 diceVelocity;
+	public static Rigidbody rb;
+	public Vector3 initPosition;
 
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody> ();
+		initPosition = rb.position;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		diceVelocity = rb.velocity;
-
 		if (Input.GetKeyDown (KeyCode.Space)) {
 			float dirX = Random.Range (0, 500);
 			float dirY = Random.Range (0, 500);
@@ -25,5 +24,10 @@ public class DiceScript : MonoBehaviour {
 			rb.AddForce (transform.up * 500);
 			rb.AddTorque (dirX, dirY, dirZ);
 		}
+	}
+
+	public void startGravity() {
+		rb.useGravity = true;
+		Debug.Log("set gravity");
 	}
 }
