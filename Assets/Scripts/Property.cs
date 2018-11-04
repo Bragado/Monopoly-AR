@@ -12,8 +12,6 @@ public class Property {
         Corner
     }
 
-
-
     public int x;
     public int y;
     public Type type;

@@ -53,7 +53,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\BasePlayer.cs" />
      <Compile Include="Assets\Scripts\BuyPropertyMenu.cs" />
      <Compile Include="Assets\Scripts\ChoosePropertyCardMenu.cs" />
      <Compile Include="Assets\Scripts\Database.cs" />

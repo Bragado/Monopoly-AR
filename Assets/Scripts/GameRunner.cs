@@ -17,8 +17,6 @@ public class GameRunner : MonoBehaviour  {
     private int playerTurn = 0;
 
     public Database database;
-    
-
 	
 	void Start () {
 
@@ -41,8 +39,6 @@ public class GameRunner : MonoBehaviour  {
                
             }
                 
-           
-
             if (playerAnimation != null)
             {
                 playerAnimation.done = NextPlayer;
@@ -65,8 +61,6 @@ public class GameRunner : MonoBehaviour  {
         playerTurn = (playerTurn + 1) % numberOfPlayers;
         ActivePlayer = (PlayerTurn)playerAnimations[playerTurn];
         ActivePlayer.activate();
-
-
     }
 
     // TODO : Erase

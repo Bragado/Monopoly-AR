@@ -2,15 +2,9 @@
 
 public class PlayerTurn : MonoBehaviour
 {
-    
-
-
     /* Callback to GameRunner */
     public delegate void Done();
     public Done done;
-
-
-
     
     /* Menus */
     public GameObject Menu;
@@ -34,6 +28,8 @@ public class PlayerTurn : MonoBehaviour
     /* Database */
     Database database = null;
     public GameObject Manager;
+    public GameObject dice1;
+    public GameObject dice2;
 
     void Start()
     {
@@ -49,29 +45,14 @@ public class PlayerTurn : MonoBehaviour
         if (!active )
             return; 
 
-        if (Input.GetKey(KeyCode.Alpha1) && !AnimationActive)
+        if (dice1.GetComponent<DiceScript>().hasLanded && dice2.GetComponent<DiceScript>().hasLanded && !AnimationActive)
         {
-            Move(1);
-        }
-        if (Input.GetKey(KeyCode.Alpha2) && !AnimationActive)
-        {
-            Move(2);
-        }
-        if (Input.GetKey(KeyCode.Alpha3) && !AnimationActive)
-        {
-            Move(3);
-        }
-        if (Input.GetKey(KeyCode.Alpha4) && !AnimationActive)
-        {
-            Move(4);
-        }
-        if (Input.GetKey(KeyCode.Alpha5) && !AnimationActive)
-        {
-            Move(12);
-        }
-        if (Input.GetKey(KeyCode.Alpha6) && !AnimationActive)
-        {
-            Move(6);
+            dice1.GetComponent<DiceScript>().hasLanded = false;
+            dice1.GetComponent<Rigidbody>().isKinematic = true;
+            dice2.GetComponent<DiceScript>().hasLanded = false;
+            dice2.GetComponent<Rigidbody>().isKinematic = true;
+
+            Move(dice1.GetComponent<DiceScript>().GetDiceCount() + dice2.GetComponent<DiceScript>().GetDiceCount());
         }
     }
 
@@ -87,8 +68,7 @@ public class PlayerTurn : MonoBehaviour
             bpm.GenericMenu("You Are Still In Prison");
             if(NoPlayTurns == 0) {
                 PropAction = Database.PROPERTY_ACTION.NONE;
-            }
-            
+            }  
         }
         else
         {
@@ -97,13 +77,12 @@ public class PlayerTurn : MonoBehaviour
             playerInfo.Move(moves);
         }
 
-        
+        dice1.transform.localPosition = dice1.GetComponent<DiceScript>().initPosition;
+        dice2.transform.localPosition = dice2.GetComponent<DiceScript>().initPosition;
     }
-
 
     public void activate()
     {
-        
         this.active = true;
     }
 
@@ -131,33 +110,24 @@ public class PlayerTurn : MonoBehaviour
         Property prop = database.GetProperty(playerInfo.x, playerInfo.y);
         PropAction = database.GetNextAction(prop, playerInfo);
 
-
-
         Menu.SetActive(true);
         
         bpm = Menu.GetComponent<BuyPropertyMenu>();
         bpm.PropertyArriveMessage(prop, playerInfo, database);
-        bpm.done = MenuAnswer;
-                
-
-
-       
+        bpm.done = MenuAnswer; 
     }
+
     public void showPickCardMenu()
     {
-
         choosePropertyCardMenu = ChoosePropertyCard.GetComponent<ChoosePropertyCardMenu>();
         ChoosePropertyCard.SetActive(true);
         choosePropertyCardMenu.done = CardPicked;
         choosePropertyCardMenu.SetMessage("This Menu Will help you choose your Card. The Property Card you desire will appear market. When you find select OK to close this menu.");
         // TODO: Mark The Card the bought
-
     }
 
     public void CardPicked()
-    {
-        
-         
+    { 
         ChoosePropertyCard.SetActive(false);
         // TODO: Unmark The Card the bought
         done();
@@ -174,8 +144,6 @@ public class PlayerTurn : MonoBehaviour
 
     public void MenuAnswer(bool answer)
     {
-
-
         if(answer)
         {
             switch(PropAction)
@@ -234,12 +202,5 @@ public class PlayerTurn : MonoBehaviour
         {
             done();
         }
-
-
-        
-        
-         
-        
-
     }
 }
