@@ -756,7 +756,7 @@ PlayerSettings:
   cloudServicesEnabled:
     UNet: 1
   facebookSdkVersion: 7.9.4
-  apiCompatibilityLevel: 3
+  apiCompatibilityLevel: 2
   cloudProjectId: 7c33dabb-0d0d-4cd7-8ff8-7516d674e12a
   projectName: Monopoly
   organizationId: unity_idtgqgssqycmgq
