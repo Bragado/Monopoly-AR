@@ -6,7 +6,6 @@ using System.IO;
 using System.Security.Cryptography.X509Certificates;
 using System.Net.Security;
 using System;
-using System.Threading.Tasks;
 
 public class WeatherController : MonoBehaviour {
 
@@ -31,9 +30,9 @@ public class WeatherController : MonoBehaviour {
         }
     }
 
-	public async void CheckWeatherStatus()
+	public void CheckWeatherStatus()
     {
-    	string weatherStatus = (await GetWeather()).list[0].weather[0].main;
+    	string weatherStatus = GetWeather().list[0].weather[0].main;
 
 		switch(weatherStatus){
 			case "Rain":
@@ -64,13 +63,13 @@ public class WeatherController : MonoBehaviour {
 		}
     }
 
-    private async Task<WeatherInfo> GetWeather()
+    private WeatherInfo GetWeather()
     {
 		ServicePointManager.ServerCertificateValidationCallback = MyRemoteCertificateValidationCallback;
 		HttpWebRequest request = 
-        (HttpWebRequest)WebRequest.Create(String.Format("https://api.openweathermap.org/data/2.5/forecast?lat={0}&lon={1}&units=metric&appid=86b46e48eff6f9add09f62cfee0d8e42",
+        (HttpWebRequest)WebRequest.Create(string.Format("https://api.openweathermap.org/data/2.5/forecast?lat={0}&lon={1}&units=metric&appid=86b46e48eff6f9add09f62cfee0d8e42",
 		latitude, longitude));	
-		HttpWebResponse response = (HttpWebResponse)(await request.GetResponseAsync());
+		HttpWebResponse response = (HttpWebResponse)(request.GetResponse());
         StreamReader reader = new StreamReader(response.GetResponseStream());
         string jsonResponse = reader.ReadToEnd();
         WeatherInfo info = JsonUtility.FromJson<WeatherInfo>(jsonResponse);
