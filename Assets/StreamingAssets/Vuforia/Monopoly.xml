@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
+    <ImageTarget name="zoomOut2" size="0.100000 0.122660" />
+    <ImageTarget name="images" size="0.100000 0.122660" />
     <ImageTarget name="45496766_1228876997250269_3034149963740217344_n" size="0.200000 0.345455" />
-    <ImageTarget name="ZoomOut" size="0.100000 0.100000" />
-    <ImageTarget name="ZoomIn" size="0.100000 0.100000" />
     <ImageTarget name="whitechapel-road" size="0.100000 0.066625" />
     <ImageTarget name="vine-street-london" size="0.100000 0.068750" />
     <ImageTarget name="Trafalgar_square2" size="0.100000 0.062625" />
