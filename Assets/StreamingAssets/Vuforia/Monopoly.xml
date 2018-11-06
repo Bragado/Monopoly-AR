@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
+  <Tracking>
+    <ImageTarget name="45496766_1228876997250269_3034149963740217344_n" size="0.200000 0.345455" />
+    <ImageTarget name="ZoomOut" size="0.100000 0.100000" />
+    <ImageTarget name="ZoomIn" size="0.100000 0.100000" />
+    <ImageTarget name="whitechapel-road" size="0.100000 0.066625" />
+    <ImageTarget name="vine-street-london" size="0.100000 0.068750" />
+    <ImageTarget name="Trafalgar_square2" size="0.100000 0.062625" />
+    <ImageTarget name="The_Strand_london" size="0.100000 0.069125" />
+    <ImageTarget name="sound" size="0.100000 0.093713" />
+    <ImageTarget name="regent-st-london" size="0.100000 0.056250" />
+    <ImageTarget name="piccadilly-london" size="0.100000 0.056250" />
+    <ImageTarget name="pentonville-road" size="0.100000 0.075000" />
+    <ImageTarget name="Pall_Mall" size="0.100000 0.068750" />
+    <ImageTarget name="oxford-st-london" size="0.100000 0.066625" />
+    <ImageTarget name="old-kent-road" size="0.100000 0.057500" />
+    <ImageTarget name="northumberland-ave" size="0.100000 0.068750" />
+    <ImageTarget name="mayfair-London" size="0.100000 0.064500" />
+    <ImageTarget name="london-Park-Lane" size="0.100000 0.066625" />
+    <ImageTarget name="London-Bond-Street" size="0.100000 0.065625" />
+    <ImageTarget name="Liberty_London" size="0.100000 0.075000" />
+    <ImageTarget name="leicester-square" size="0.100000 0.056250" />
+    <ImageTarget name="Horse_guard_Whitehall" size="0.100000 0.068750" />
+    <ImageTarget name="Fleet-Street-London" size="0.100000 0.075000" />
+    <ImageTarget name="Euston_Road" size="0.100000 0.043125" />
+    <ImageTarget name="coventry-street" size="0.100000 0.056000" />
+    <ImageTarget name="Bow_Street" size="0.100000 0.055750" />
+    <ImageTarget name="angel-islington" size="0.100000 0.075250" />
+  </Tracking>
+</QCARConfig>
