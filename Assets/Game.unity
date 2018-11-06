@@ -13257,7 +13257,7 @@ MonoBehaviour:
   mDataSetPath: '--- EMPTY ---'
   mAspectRatio: 1
   mImageTargetType: 0
-  mWidth: 0.57894737
+  mWidth: 1
   mHeight: 1
 --- !u!1 &1588108786
 GameObject:
