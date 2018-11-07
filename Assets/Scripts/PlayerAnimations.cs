@@ -81,7 +81,6 @@ public class PlayerAnimations : MonoBehaviour
         setAnimations(houses);
 
         int angle = (int)transform.localEulerAngles.y;
-        Debug.Log("ANGLE :             " + angle +"  ||!!!!!!");
 
         setAnimations(houses);
 
@@ -108,7 +107,6 @@ public class PlayerAnimations : MonoBehaviour
             // the player will pass throught a corner 
             if (10 - housesMoved < houses)
             {
-                Debug.Log("he entered in here");
                 housesAcc = 10 - housesMoved;
                 houses -= housesAcc;
 
@@ -123,7 +121,6 @@ public class PlayerAnimations : MonoBehaviour
 
 
             housesMoved += housesAcc;
-            Debug.Log("Houses Moved: " + housesMoved + "                      | Houses: " + housesAcc);
             exit = true;
 
 
@@ -139,7 +136,6 @@ public class PlayerAnimations : MonoBehaviour
                 housesMoved = 0;
                 //walks++;
                 exit = false;
-                Debug.Log("houses Left: " + houses);
             }
 
 
@@ -237,7 +233,6 @@ public class PlayerAnimations : MonoBehaviour
             else
             {
                 
-                Debug.Log("Got There");
                 current++;
                 
                 
@@ -258,7 +253,6 @@ public class PlayerAnimations : MonoBehaviour
     private void AnimationFinished()
     {
         correctAngles();
-        Debug.Log("finishing animations!!!");
         animator.SetBool("walking", false);
         animator.SetBool("running", false);
         onMove = false;

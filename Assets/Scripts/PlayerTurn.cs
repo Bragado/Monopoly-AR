@@ -81,7 +81,6 @@ public class PlayerTurn : MonoBehaviour
 
     public void Move(int moves)
     {
-        Debug.Log("PLAYER MONEY: " + playerInfo.GetMoney() + " !!!!");
 
         if (NoPlayTurns > 0)
         {
@@ -113,8 +112,6 @@ public class PlayerTurn : MonoBehaviour
 
     public void FinishedMovement()
     {
-        Debug.Log("Player Coordinate: [X, Y] = [" + playerInfo.x + ", " + playerInfo.y + "]");
-
 
         // Just To be sure
         if (database == null)
@@ -154,12 +151,10 @@ public class PlayerTurn : MonoBehaviour
         
         if(totalProperties == null)
         {
-            Debug.Log("Total properties is null" );
             totalProperties = GameObject.FindGameObjectsWithTag("Respawn");
         }
 
 
-        Debug.Log("Total number of cards: " + totalProperties.Length);
 
         for (int i = 0; i < totalProperties.Length; i++)
         {
@@ -196,7 +191,6 @@ public void CardPicked()
 
     public void MenuAnswer(bool answer)
     {
-        Debug.Log("PLAYER MONEY: " + playerInfo.GetMoney() + " !!!!");
         if (answer)
         {
             switch(PropAction)
@@ -250,7 +244,6 @@ public void CardPicked()
         Menu.SetActive(false);
         this.AnimationActive = false;
         this.active = false;
-        Debug.Log("PLAYER MONEY: " + playerInfo.GetMoney() + " !!!!");
         updateBalance();
         if (PropAction ==   Database.PROPERTY_ACTION.NONE )
         {

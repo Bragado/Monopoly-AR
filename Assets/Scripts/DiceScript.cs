@@ -42,6 +42,11 @@ public class DiceScript : MonoBehaviour {
 	}
 
 	public void startGravity() {
+		/*Debug.Log(Vector3.up);
+		Debug.Log(transform.forward);
+		Debug.Log(transform.right);
+		Debug.Log(transform.up);
+		Debug.Log(-transform.up);*/
 		rb = GetComponent<Rigidbody> ();
 		rb.useGravity = true;
 		rb.isKinematic = false;
@@ -54,7 +59,13 @@ public class DiceScript : MonoBehaviour {
 		float dotProduct = 0;
 		float currentDotProduct;
 
-		if ((currentDotProduct = Vector3.Dot (transform.forward, Vector3.up)) > 0) {
+		/*Debug.Log(Vector3.up);
+		Debug.Log(transform.forward);
+		Debug.Log(transform.right);
+		Debug.Log(transform.up);
+		Debug.Log(-transform.up);*/
+
+		if ((currentDotProduct = Vector3.Dot (transform.forward, transform.parent.up)) > 0) {
 			Debug.Log(currentDotProduct);
 			Debug.Log(4);
 			if(currentDotProduct > dotProduct) {
@@ -62,7 +73,7 @@ public class DiceScript : MonoBehaviour {
 				diceCount = 4;
 			}		
 		}
-		if ((currentDotProduct = Vector3.Dot (-transform.forward, Vector3.up)) > 0) {
+		if ((currentDotProduct = Vector3.Dot (-transform.forward, transform.parent.up)) > 0) {
 			Debug.Log(currentDotProduct);
 			Debug.Log(3);
 
@@ -71,7 +82,7 @@ public class DiceScript : MonoBehaviour {
 				diceCount = 3;
 			}
 		}
-		if ((currentDotProduct = Vector3.Dot (transform.up, Vector3.up)) > 0) {
+		if ((currentDotProduct = Vector3.Dot (transform.up, transform.parent.up)) > 0) {
 			Debug.Log(currentDotProduct);
 			Debug.Log(6);
 
@@ -80,7 +91,7 @@ public class DiceScript : MonoBehaviour {
                 diceCount = 6;
 			}
 		}
-		if ((currentDotProduct = Vector3.Dot (-transform.up, Vector3.up)) > 0) {
+		if ((currentDotProduct = Vector3.Dot (-transform.up, transform.parent.up)) > 0) {
 			Debug.Log(currentDotProduct);
 			Debug.Log(1);
 
@@ -89,7 +100,7 @@ public class DiceScript : MonoBehaviour {
 				diceCount = 1;
 			}
 		}
-		if ((currentDotProduct = Vector3.Dot (transform.right, Vector3.up)) > 0) {
+		if ((currentDotProduct = Vector3.Dot (transform.right, transform.parent.up)) > 0) {
 			Debug.Log(currentDotProduct);
 			Debug.Log(2);
 
@@ -98,7 +109,7 @@ public class DiceScript : MonoBehaviour {
 				diceCount = 2;
 			}
 		}
-		if ((currentDotProduct = Vector3.Dot (-transform.right, Vector3.up)) > 0) {
+		if ((currentDotProduct = Vector3.Dot (-transform.right, transform.parent.up)) > 0) {
 			Debug.Log(currentDotProduct);
 			Debug.Log(5);
 

@@ -88,7 +88,6 @@ public class GameRunner : MonoBehaviour {
         {
 
             totalProperties = GameObject.FindGameObjectsWithTag("GameController");
-            Debug.Log("Total number of imageTargets for property cards: ");
         }
 
 
