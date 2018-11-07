@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerTurn : MonoBehaviour
 {
@@ -31,12 +32,34 @@ public class PlayerTurn : MonoBehaviour
     public GameObject dice1;
     public GameObject dice2;
 
+
+    /* Money Counter */
+    public TMPro.TextMeshProUGUI balance;
+
+
+    /* Colors */
+    Color white = new Color(1, 1, 1, 1);
+    Color Red = new Color(1, 0, 0, 1);
+
+    /* All existent properties */
+    private GameObject[] totalProperties = null;
+    private MaterialPropertyBlock propsRed;
+    private MaterialPropertyBlock propsWhite;
+
     void Start()
     {
         this.playerAnimations = this.GetComponent<PlayerAnimations>();
         GameRunner gr = Manager.GetComponent<GameRunner>();
         this.database = gr.database;
         this.playerAnimations.done = FinishedMovement;
+
+        propsRed = new MaterialPropertyBlock();
+        propsRed.SetColor("_Color", Color.red);
+
+        propsWhite = new MaterialPropertyBlock();
+        propsWhite.SetColor("_Color", Color.white);
+
+
     }
 
     // Update is called once per frame
@@ -58,7 +81,9 @@ public class PlayerTurn : MonoBehaviour
 
     public void Move(int moves)
     {
-        if(NoPlayTurns > 0)
+        Debug.Log("PLAYER MONEY: " + playerInfo.GetMoney() + " !!!!");
+
+        if (NoPlayTurns > 0)
         {
             this.AnimationActive = true;
             NoPlayTurns--;
@@ -124,12 +149,39 @@ public class PlayerTurn : MonoBehaviour
         choosePropertyCardMenu.done = CardPicked;
         choosePropertyCardMenu.SetMessage("This Menu Will help you choose your Card. The Property Card you desire will appear market. When you find select OK to close this menu.");
         // TODO: Mark The Card the bought
+
+        GameObject PropertyChoosed = GameObject.Find("" + playerInfo.x + playerInfo.y);
+        
+        if(totalProperties == null)
+        {
+            Debug.Log("Total properties is null" );
+            totalProperties = GameObject.FindGameObjectsWithTag("Respawn");
+        }
+
+
+        Debug.Log("Total number of cards: " + totalProperties.Length);
+
+        for (int i = 0; i < totalProperties.Length; i++)
+        {
+            totalProperties[i].GetComponent<Renderer>().SetPropertyBlock(propsRed);
+        }
+
+        PropertyChoosed.GetComponent<Renderer>().SetPropertyBlock(propsWhite);
+        
+        
+
     }
 
-    public void CardPicked()
+public void CardPicked()
     { 
         ChoosePropertyCard.SetActive(false);
-        // TODO: Unmark The Card the bought
+
+        for (int i = 0; i < totalProperties.Length; i++)
+        {
+            totalProperties[i].GetComponent<Renderer>().SetPropertyBlock(propsWhite);
+        }
+
+
         done();
     }
 
@@ -144,7 +196,8 @@ public class PlayerTurn : MonoBehaviour
 
     public void MenuAnswer(bool answer)
     {
-        if(answer)
+        Debug.Log("PLAYER MONEY: " + playerInfo.GetMoney() + " !!!!");
+        if (answer)
         {
             switch(PropAction)
             {
@@ -198,6 +251,7 @@ public class PlayerTurn : MonoBehaviour
         this.AnimationActive = false;
         this.active = false;
         Debug.Log("PLAYER MONEY: " + playerInfo.GetMoney() + " !!!!");
+        this.balance.text = "" + playerInfo.GetMoney() ;
         if (PropAction ==   Database.PROPERTY_ACTION.NONE )
         {
             done();

@@ -65,7 +65,8 @@ public class GameRunner : MonoBehaviour  {
 
     // TODO : Erase
     void Update () {
-       
+        
+            
 
     }
 }
