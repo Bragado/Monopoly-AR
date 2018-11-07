@@ -5,10 +5,14 @@ using Vuforia;
 
 public class BuyHousesManager : MonoBehaviour, ITrackableEventHandler
 {
+    /* Callback to PlayTurn */
+    public delegate void Done();
+    public Done done;
+    
 
     // whether should buy a house or an hotel
-    public bool buyHouse = true;
-
+     
+    public bool active = false;
 
     public bool startCounting = false;
     public float timeHolding = 2.5f;
@@ -36,11 +40,13 @@ public class BuyHousesManager : MonoBehaviour, ITrackableEventHandler
              newStatus == TrackableBehaviour.Status.EXTENDED_TRACKED)
         {
             startCounting = true;
+            Debug.Log("Counter Started !!!!!");
            
         }else
         {
             startCounting = false;
             time = 0.0f;
+            Debug.Log("Counter Stopping !!!!!");
         }
 
     }
@@ -49,7 +55,7 @@ public class BuyHousesManager : MonoBehaviour, ITrackableEventHandler
 	// Update is called once per frame
 	void Update () {
 
-        if(startCounting)
+        if(startCounting && active)
         {
             time += Time.deltaTime;
 
@@ -57,10 +63,14 @@ public class BuyHousesManager : MonoBehaviour, ITrackableEventHandler
             {
 
                 // carta identificada
-                // BuyHouse buyHouse = propertyHouses.GetComponent<BuyHouse>();
-                // if(buyHouse) buyhouses.addHouse(); else buyHouses.addHotel();
-                //
-                startCounting = false;
+                Debug.Log("Time REACHED !!!!!");
+                BuyHouse buyHouse = propertyHouses.GetComponent<BuyHouse>();
+                buyHouse.addHouse();
+
+                done();
+
+                
+
             }
 
         }

@@ -251,10 +251,26 @@ public void CardPicked()
         this.AnimationActive = false;
         this.active = false;
         Debug.Log("PLAYER MONEY: " + playerInfo.GetMoney() + " !!!!");
-        this.balance.text = "" + playerInfo.GetMoney() ;
+        updateBalance();
         if (PropAction ==   Database.PROPERTY_ACTION.NONE )
         {
             done();
         }
     }
+
+    public void updateBalance()
+    {
+        this.balance.text = "" + playerInfo.GetMoney();
+    }
+
+
+    public PlayerInfo GetPlayerInfo()
+    {
+        return playerInfo;
+    }
+
+
+    
+
+
 }

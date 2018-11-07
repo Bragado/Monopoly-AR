@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using Vuforia;
 
-public class ZoomInControllher: MonoBehaviour, ITrackableEventHandler
+public class ZoomInController : MonoBehaviour, ITrackableEventHandler
 {
     private TrackableBehaviour mTrackableBehaviour;
-	public AudioSource audio;
- 
+    private bool wasTracked = false;
+
     void Start()
     {
         mTrackableBehaviour = GetComponent<TrackableBehaviour>();
@@ -16,14 +16,28 @@ public class ZoomInControllher: MonoBehaviour, ITrackableEventHandler
             mTrackableBehaviour.RegisterTrackableEventHandler(this);
         }
     }
-     
+
     public void OnTrackableStateChanged(TrackableBehaviour.Status previousStatus, TrackableBehaviour.Status newStatus)
     {
         if (newStatus == TrackableBehaviour.Status.DETECTED ||
             newStatus == TrackableBehaviour.Status.TRACKED ||
             newStatus == TrackableBehaviour.Status.EXTENDED_TRACKED)
         {
-			Debug.Log("aaaaaaaaa\n\n\n\n");
+            if (!wasTracked)
+            {
+                GameObject game = GameObject.FindGameObjectWithTag("GameBoard");
+                game.transform.localScale += new Vector3(1, 1, 1);
+                wasTracked = true;
+            }
+        }
+        else
+        {
+            if (wasTracked)
+            {
+                GameObject game = GameObject.FindGameObjectWithTag("GameBoard");
+                game.transform.localScale = new Vector3(1, 1, 1);
+                wasTracked = false;
+            }
         }
     }
-}  
+}

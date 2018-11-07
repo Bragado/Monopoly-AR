@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PLAYER
   - PropertyCard
+  - GameBoard
   layers:
   - Default
   - TransparentFX

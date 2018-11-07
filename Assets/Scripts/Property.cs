@@ -26,11 +26,11 @@ public class Property {
     /* value and rent */
     public int value;
     public int rent = 15;   // default value for now
-    public int rent1house;
-    public int rent2houses;
-    public int rent3houses;
-    public int rent4houses;
-    public int renthotel;
+    public int rent1house = 100;
+    public int rent2houses = 200;
+    public int rent3houses = 300;
+    public int rent4houses = 400;
+    public int renthotel = 500;
     public int housevalue;
     public int hotelvalue;
 

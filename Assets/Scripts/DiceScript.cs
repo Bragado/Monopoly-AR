@@ -13,7 +13,6 @@ public class DiceScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		initPosition = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
 		rb = GetComponent<Rigidbody> ();
 		isRolled = false;
 		hasLanded = false;
@@ -22,6 +21,8 @@ public class DiceScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (isRolled && !hasLanded) {
+
+			RollTheDice(rb.transform.position);
 			if((Time.time - startingTime > 1) && rb.velocity.magnitude < 0.005){
 				rb.velocity = Vector3.zero;
 				rb.angularVelocity = Vector3.zero;
@@ -34,9 +35,9 @@ public class DiceScript : MonoBehaviour {
 	}
 
 	void RollTheDice(Vector3 lastPos) {
-		float dirX = Random.Range (0, 0.4f);
-		float dirY = Random.Range (0, 0.4f);
-		float dirZ = Random.Range (0, 0.4f);
+		float dirX = Random.Range (0, 1f);
+		float dirY = Random.Range (0, 1f);
+		float dirZ = Random.Range (0, 1f);
 		rb.AddTorque (dirX, dirY, dirZ);
 	}
 
@@ -54,36 +55,53 @@ public class DiceScript : MonoBehaviour {
 		float currentDotProduct;
 
 		if ((currentDotProduct = Vector3.Dot (transform.forward, Vector3.up)) > 0) {
+			Debug.Log(currentDotProduct);
+			Debug.Log(4);
 			if(currentDotProduct > dotProduct) {
 				dotProduct = currentDotProduct;
 				diceCount = 4;
 			}		
 		}
 		if ((currentDotProduct = Vector3.Dot (-transform.forward, Vector3.up)) > 0) {
+			Debug.Log(currentDotProduct);
+			Debug.Log(3);
+
 			if(currentDotProduct > dotProduct) {
 				dotProduct = currentDotProduct;
 				diceCount = 3;
 			}
 		}
 		if ((currentDotProduct = Vector3.Dot (transform.up, Vector3.up)) > 0) {
+			Debug.Log(currentDotProduct);
+			Debug.Log(6);
+
 			if(currentDotProduct > dotProduct) {
 				dotProduct = currentDotProduct;
-				diceCount = 6;
+                diceCount = 6;
 			}
 		}
 		if ((currentDotProduct = Vector3.Dot (-transform.up, Vector3.up)) > 0) {
+			Debug.Log(currentDotProduct);
+			Debug.Log(1);
+
 			if(currentDotProduct > dotProduct) {
 				dotProduct = currentDotProduct;
 				diceCount = 1;
 			}
 		}
 		if ((currentDotProduct = Vector3.Dot (transform.right, Vector3.up)) > 0) {
+			Debug.Log(currentDotProduct);
+			Debug.Log(2);
+
 			if(currentDotProduct > dotProduct) {
 				dotProduct = currentDotProduct;
 				diceCount = 2;
 			}
 		}
-		if ((currentDotProduct = Vector3.Dot (-transform.right, Vector3.up)) > 1) {
+		if ((currentDotProduct = Vector3.Dot (-transform.right, Vector3.up)) > 0) {
+			Debug.Log(currentDotProduct);
+			Debug.Log(5);
+
 			if(currentDotProduct > dotProduct) {
 				dotProduct = currentDotProduct;
 				diceCount = 5;
