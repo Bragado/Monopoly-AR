@@ -18195,8 +18195,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RainSystem: {fileID: 1162369423}
   CloudSystem: {fileID: 1695722326}
-  latitude: 41.17794010000001
-  longitude: -8.597687599999972
 --- !u!1 &1240550945
 GameObject:
   m_ObjectHideFlags: 0
@@ -22575,7 +22573,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1695722327
 Transform:
   m_ObjectHideFlags: 0

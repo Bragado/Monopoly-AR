@@ -1,7 +1,8 @@
 Android
 PlayerPath?
-C:/Users/Manuel Gomes/Desktop/monopoly.apk
+C:/Users/Manuel Gomes/Desktop/monopoly1.apk
 SceneListBegin?
+Assets/Menu.unity
 Assets/Game.unity
 SceneListEnd?
 7e7ee21ab8ff1f2eb206565d6caa2bfd Assembly-CSharp.dll:TMPro.Examples.VertexZoom
@@ -83,6 +84,7 @@ e90403eeda069970e0b9de1533de13a6 UnityEngine.UI.dll:UnityEngine.UI.ToggleGroup
 2d58ca16854b99daea8c45e9c0f367b7 UnityEngine.UI.dll:UnityEngine.EventSystems.TouchInputModule
 16da51d1b62ef6d4ee1849350434023b UnityEngine.UI.dll:UnityEngine.UI.VerticalLayoutGroup
 8ce712c004fddf1ebc65ee6757cd994e Assembly-CSharp.dll:TMPro.Examples.TMPro_InstructionOverlay
+7b1bf3c8951386b586f762d894690a8e Assembly-CSharp.dll:.SoundController
 402eda163a979531e151a4ea8fc59d59 Assembly-CSharp.dll:.BuyPropertyMenu
 dd223b2cbb523615eee8980d99d61ddd Assembly-CSharp.dll:.EnvMapAnimator
 486cd95c82d8305219c352c06b776e1f UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
@@ -232,6 +234,7 @@ e04611b8715e6833d2bd7010fc6be10b TextMeshPro-2017.3-Runtime.dll:TMPro.TMP_StyleS
 b14b4630cc47b6e9ea8a644551a6a8cc TextMeshPro-2017.3-Runtime.dll:TMPro.TMP_Text
 486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:TMPro.Examples.TMP_TextSelector_A
 58b80cf56079b9b2c86ad9aaede3dca8 Assembly-CSharp.dll:TMPro.Examples.TextMeshProFloatingText
+5711ece2cb4a22129693b58ae59449da Assembly-CSharp.dll:.BuyHousesManager
 486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.MainMenu
 eabb14b55dc317646709e1aaab0543fb Assembly-CSharp.dll:TMPro.Examples.Benchmark02
 486cd95c82d8305219c352c06b776e1f TextMeshPro-2017.3-Editor.dll:TMPro.EditorUtilities.DropdownEditor
@@ -253,6 +256,7 @@ bf9092984e391e854436c93547ae117f TextMeshPro-2017.3-Editor.dll:TMPro.EditorUtili
 486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:TMPro.TMP_DigitValidator
 486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:TMPro.Examples.TeleType
 93c79d9898c96227c3913847eb39db63 Assembly-CSharp.dll:TMPro.Examples.ShaderPropAnimator
+486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.ZoomOutController
 9ecabe4a6b0b699f4890bde3b3e4b3b9 Assembly-CSharp.dll:TMPro.Examples.TMP_FrameRateCounter
 d6847627ba7741c18a9d5258fc293648 Assembly-CSharp.dll:TMPro.Examples.VertexShakeA
 201273fb4f889724fb090164b7d6c657 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
@@ -291,6 +295,7 @@ d75dc834c5dec688db75a55a1724c90f UnityEngine.HoloLens.dll:UnityEngine.Audio.Audi
 e1ea12ca952c81d81a9a21fdf34446ed UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInputModule
 98d69a140ec0084cde3b6a5e09aea295 UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingCollider
 dfd33ff9ae3ce8d7ca1f22b475ec2387 UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
+486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.ZoomInController
 e5930b3f3763871ca43745d91dd968d4 Assembly-CSharp.dll:.ChatController
 34d219cdf8a72aef75c203b036a85318 Assembly-CSharp.dll:TMPro.Examples.Benchmark01
 0a006f3734181ba8b26758f0866152c0 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
@@ -298,6 +303,7 @@ e5930b3f3763871ca43745d91dd968d4 Assembly-CSharp.dll:.ChatController
 7e7ee21ab8ff1f2eb206565d6caa2bfd Assembly-CSharp.dll:TMPro.Examples.VertexShakeB
 1655e5cbdafc3f52a798a8128c8c7c12 Assembly-CSharp.dll:TMPro.TMP_TextEventHandler
 2691cd41b82540030db7bb2bd0ee1205 Assembly-CSharp.dll:.DiceScript
+86e585aa36eb51fd760c609294aa299a Assembly-CSharp.dll:.BuyHouse
 486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:TMPro.Examples.VertexColorCycler
 1b8e83c83f5da5a5e888031b95784214 Assembly-CSharp.dll:TMPro.Examples.TextMeshSpawner
 1b19a590a02b791cf7c287970cfab801 Assembly-CSharp.dll:TMPro.Examples.SkewTextExample
@@ -367,11 +373,6 @@ aa5e3523afd7fd907d3f99da4b777fdc Vuforia.UnityExtensions.dll:Vuforia.VuforiaConf
 c8a41ce4eea7677f6dd2aa0e422a2f04 Vuforia.UnityExtensions.dll:Vuforia.VuMarkBehaviour
 c31ff9acb65f7a15b5c6fd77c3314d83 Vuforia.UnityExtensions.dll:Vuforia.WireframeBehaviour
 486cd95c82d8305219c352c06b776e1f Vuforia.UnityExtensions.dll:Vuforia.WireframeTrackableEventHandler
-e0d6fba4541b88c17a69d2ca3ee1a82f Assembly-CSharp.dll:.WeatherController
+3cd3f1c834d25991fed0c1d36245edfa Assembly-CSharp.dll:.WeatherController
 835999720c64ca72971bdcd599094aa9 Assembly-CSharp.dll:TMPro.Examples.ObjectSpin
 486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:TMPro.Examples.SimpleScript
-7b1bf3c8951386b586f762d894690a8e Assembly-CSharp.dll:.SoundController
-5711ece2cb4a22129693b58ae59449da Assembly-CSharp.dll:.BuyHousesManager
-486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.ZoomOutController
-486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.ZoomInController
-86e585aa36eb51fd760c609294aa299a Assembly-CSharp.dll:.BuyHouse

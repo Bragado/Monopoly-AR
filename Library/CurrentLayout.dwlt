@@ -45,7 +45,7 @@ MonoBehaviour:
   m_MinSize: {x: 683, y: 342}
   m_MaxSize: {x: 12008, y: 8042}
   vertical: 0
-  controlID: 52
+  controlID: 54
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -210,7 +210,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 342}
   m_MaxSize: {x: 8006, y: 8042}
   vertical: 1
-  controlID: 53
+  controlID: 55
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -234,7 +234,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 221}
   m_MaxSize: {x: 8006, y: 4021}
   vertical: 0
-  controlID: 54
+  controlID: 56
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -414,19 +414,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts
+    - Assets
   m_ViewMode: 1
   m_StartGridSize: 46
   m_LastFolders:
-  - Assets/Scripts
+  - Assets
   m_LastFoldersGridSize: 46
   m_LastProjectPath: C:\Users\Manuel Gomes\Documents\FEUP\RVAU\Monopoly-AR
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 31}
-    m_SelectedIDs: 422c0000
-    m_LastClickedID: 11330
+    m_SelectedIDs: be2b0000
+    m_LastClickedID: 11198
     m_ExpandedIDs: 00000000be2b0000f22c0000c62d0000382e0000603000009630000074310000ec310000f03100004a32000066320000383500003e3500009c36000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -480,8 +480,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 08cfffff
-    m_LastClickedInstanceID: -12536
+    m_SelectedInstanceIDs: 502a0000
+    m_LastClickedInstanceID: 10832
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000b0300000ea330000383300003236000000000000f04200002a4d0000
     m_RenameOverlay:
@@ -571,9 +571,9 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: e4fbffff
-    m_LastClickedID: -1052
-    m_ExpandedIDs: 08cfffffe4fbffffe6fbffff0000000098390000ce390000043e0000383f0000463f0000
+    m_SelectedIDs: 
+    m_LastClickedID: 0
+    m_ExpandedIDs: 8869fdffba6afdff7c6bfdff4a6efdff5c6efdff7e75fdffb076fdff7277fdff407afdff527afdff4489fdff768afdff388bfdff068efdff188efdff2ed1fdff60d2fdff22d3fdfff0d5fdff02d6fdffd0dafeff02dcfeffc4dcfeff92dffeffa4dffeff886bffffba6cffff7c6dffff4a70ffff5c70ffffe47affff167cffffd87cffffa67fffffb87fffff869dffffb89effff7a9fffff48a2ffff5aa2ffff4cc0ffff0ee2ffffe4fbffffe6fbffff000000006c3c0000383f0000463f0000e4600000427800001c7e00002a7e0000c43b0100d63b0100ec3b0100283c01005a3c0100606901007269010088690100c4690100f6690100fc6e010080720100d6740100e4740100f4ba01000abb010046bb0100
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -624,14 +624,14 @@ MonoBehaviour:
     height: 366
   m_PersistentViewDataDictionary: {fileID: 0}
   m_SceneLighting: 1
-  lastFramingTime: 275.1348623047691
+  lastFramingTime: 1699.468926848516
   m_2DMode: 1
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 396.82, y: 318.34, z: 0}
+    m_Target: {x: 500.3292, y: 125.367386, z: 7.857669}
     speed: 2
-    m_Value: {x: 396.82, y: 318.34, z: 0}
+    m_Value: {x: 500.3292, y: 125.367386, z: 7.857669}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -663,15 +663,15 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 537.2887
+    m_Target: 785.3951
     speed: 2
-    m_Value: 537.2887
+    m_Value: 785.3951
   m_Ortho:
     m_Target: 1
     speed: 2
     m_Value: 1
   m_ShowGlobalGrid: 1
-  m_LastSceneViewRotation: {x: -0.03371774, y: 0.3882368, z: 0.014215964, w: 0.9208329}
+  m_LastSceneViewRotation: {x: -0.08717229, y: 0.89959055, z: -0.21045254, w: -0.3726226}
   m_LastSceneViewOrtho: 0
   m_ReplacementShader: {fileID: 0}
   m_ReplacementString: 
@@ -712,10 +712,10 @@ MonoBehaviour:
     m_VRangeLocked: 0
     hZoomLockedByDefault: 0
     vZoomLockedByDefault: 0
-    m_HBaseRangeMin: -338.5
-    m_HBaseRangeMax: 338.5
-    m_VBaseRangeMin: -174.5
-    m_VBaseRangeMax: 174.5
+    m_HBaseRangeMin: -270.80002
+    m_HBaseRangeMax: 270.80002
+    m_VBaseRangeMin: -139.6
+    m_VBaseRangeMax: 139.6
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1

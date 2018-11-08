@@ -29,7 +29,6 @@ public class BuyHouse : MonoBehaviour {
         Property property = gr.database.GetProperty(x, y);
         if (property.owner != gr.GetActivePlayerInfo())
         {
-            Debug.Log("You are not the owner of this property!");
             return;
         }
             

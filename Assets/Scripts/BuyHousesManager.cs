@@ -40,13 +40,11 @@ public class BuyHousesManager : MonoBehaviour, ITrackableEventHandler
              newStatus == TrackableBehaviour.Status.EXTENDED_TRACKED)
         {
             startCounting = true;
-            Debug.Log("Counter Started !!!!!");
            
         }else
         {
             startCounting = false;
             time = 0.0f;
-            Debug.Log("Counter Stopping !!!!!");
         }
 
     }
@@ -63,7 +61,6 @@ public class BuyHousesManager : MonoBehaviour, ITrackableEventHandler
             {
 
                 // carta identificada
-                Debug.Log("Time REACHED !!!!!");
                 BuyHouse buyHouse = propertyHouses.GetComponent<BuyHouse>();
                 buyHouse.addHouse();
 
